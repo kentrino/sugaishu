@@ -29,8 +29,8 @@ $(TARGET): $(OBJECTS) $(LIBS)
 	$(COMPILER) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	-mkdir -p $(OBJDIR)
-  # $@ $<はなに
+	# -mkdir -p $(OBJDIR)
+    # $@ $<はなに
 	$(COMPILER) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 all: clean $(TARGET)
