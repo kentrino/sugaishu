@@ -3,14 +3,16 @@
 
 #include <util.h>
 
-using namespace std;
+using std::ostringstream;
+using std::string;
+using std::vector;
 
 string toString(vector<int> vec, int vecSize)
 {
   vector<int>::iterator it;
   ostringstream s;
 
-  for (it = vec.begin(); it < vec.begin() + vecSize; it++) {
+  for (it = vec.begin(); it < vec.begin() + vecSize; ++it) {
     if (it == vec.begin()) {
       s << "[" << *it;
       continue;

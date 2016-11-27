@@ -1,7 +1,7 @@
-#ifndef __CHECK_H__
-#define __CHECK_H__
+#ifndef SUGAISH_CHECK_H_
+#define SUGAISH_CHECK_H_
 
 bool check4(int primes[], int n);
 bool check3(int primes[], int n);
 
-#endif
+#endif  // SUGAISH_CHECK_H_

@@ -1,9 +1,12 @@
-#ifndef __UTIL_H__
-#define __UTIL_H__
+#ifndef SUGAISH_UTIL_H_
+#define SUGAISH_UTIL_H_
+
 #include <sstream>
 #include <vector>
 
-using namespace std;
+using std::ostringstream;
+using std::string;
+using std::vector;
 
 string toString(vector<int> vec, int vecSize);
 
@@ -12,7 +15,7 @@ string toString(ElementType *arr, int arrSize) {
   int i = 0;
   ostringstream s;
 
-  for (i = 0; i < arrSize; i++) {
+  for (i = 0; i < arrSize; ++i) {
     if (i == 0) {
       s << "[" << arr[i];
       continue;
@@ -23,4 +26,4 @@ string toString(ElementType *arr, int arrSize) {
   return s.str();
 }
 
-#endif
+#endif  // SUGAISH_UTIL_H_

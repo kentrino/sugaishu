@@ -3,10 +3,10 @@
 #include <combination.h>
 #include <combination_number.h>
 
-using namespace std;
+using std::vector;
 
 bool Combination::next() {
-  int i = 0;
+  int i;
   int i_to_update = 0;
 
   if (indices_[r_ - 1] == max_indices_[r_ - 1]) return false;

@@ -14,6 +14,7 @@ bool initialized_ = false;
 int64_t calc(const int n, const int r)
 {
   int i;
+  
   int64_t factor = 1;
   int64_t divisor = 1;
 

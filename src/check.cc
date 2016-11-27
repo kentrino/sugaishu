@@ -1,9 +1,7 @@
-#include <stdio.h>
-
 bool check4(int primes[], int n)
 {
-  int d[4][4];
   int i, j;
+  int d[4][4];
 
   for (i = 0; i < 4; i++) {
     d[0][i] = primes[i];

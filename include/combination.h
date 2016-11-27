@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <vector>
 
-using namespace std;
+using std::vector;
 
 class Combination {
   public:

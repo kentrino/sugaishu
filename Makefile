@@ -17,18 +17,18 @@ SRCDIR    = ./src
 ifeq "$(strip $(SRCDIR))" ""
   SRCDIR  = .
 endif
-SOURCES   = $(wildcard $(SRCDIR)/*.cpp)
+SOURCES   = $(wildcard $(SRCDIR)/*.cc)
 OBJDIR    = ./obj
 ifeq "$(strip $(OBJDIR))" ""
   OBJDIR  = .
 endif
-OBJECTS   = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))
+OBJECTS   = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cc=.o)))
 DEPENDS   = $(OBJECTS:.o=.d)
 
 $(TARGET): $(OBJECTS) $(LIBS)
 	$(COMPILER) -o $@ $^ $(LDFLAGS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cc
 	# -mkdir -p $(OBJDIR)
     # $@ $<はなに
 	$(COMPILER) $(CFLAGS) $(INCLUDE) -o $@ -c $<
