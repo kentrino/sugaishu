@@ -34,3 +34,6 @@ http://d.hatena.ne.jp/pknight/20090826/1251303641
 
 # 文字列で学ぶC++入門
 http://qiita.com/7shi/items/cac7b3e9b90bf91b00cc
+
+# ビルドツールbazel
+http://blog.matsuokah.jp/entry/2015/12/15/080000
