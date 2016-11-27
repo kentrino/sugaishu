@@ -1,9 +1,9 @@
+#include <cstdint>
 #include <cstdio>
 
 #include <combination_number.h>
-#include <cstdint>
 
-#define COMBINATION_N_MAX 2000
+#define COMBINATION_N_MAX 1500
 #define COMBINATION_R_MAX 4
 
 namespace CombinationNumber {
