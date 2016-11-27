@@ -14,14 +14,14 @@ class Combination {
     ~Combination();
 
   private:
-    const int n;
-    const int r;
+    const int n_;
+    const int r_;
 
-    int *result;
-    int64_t *indices;
-    int64_t *max_indices;
+    int *result_;
+    int64_t *indices_;
+    int64_t *max_indices_;
 
-    vector<int> v;
+    vector<int> v_;
 };
 
 #endif  // SUGAISH_COMBINATION_H_

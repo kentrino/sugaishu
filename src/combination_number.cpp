@@ -8,21 +8,23 @@
 
 namespace CombinationNumber {
 
-int64_t _m[COMBINATION_N_MAX][COMBINATION_R_MAX];
-bool _initialized = false;
+int64_t m_[COMBINATION_N_MAX][COMBINATION_R_MAX];
+bool initialized_ = false;
 
-int64_t calc(int n, int r)
+int64_t calc(const int n, const int r)
 {
   int i;
   int64_t factor = 1;
   int64_t divisor = 1;
 
-  int _r = r;
-  for (i = 0; i < r; i++) {
-    factor *= n;
-    divisor *= _r;
-    n--;
-    _r--;
+  int f = n;
+  int d = r;
+
+  for (i = 0; i < r; ++i) {
+    factor *= f;
+    divisor *= d;
+    --f;
+    --d;
   }
 
   if (divisor == 0) {
@@ -34,22 +36,22 @@ int64_t calc(int n, int r)
 
 void init() {
   int i, j;
-  if (_initialized) return;
+  if (initialized_) return;
 
-  _initialized = true;
-  for (i = 0; i < COMBINATION_N_MAX; i++) {
-    for (j = 0; j < COMBINATION_R_MAX; j++) {
-      _m[i][j] = calc(i, j);
+  initialized_ = true;
+  for (i = 0; i < COMBINATION_N_MAX; ++i) {
+    for (j = 0; j < COMBINATION_R_MAX; ++j) {
+      m_[i][j] = calc(i, j);
     }
   }
 }
 
 int64_t get(int n, int r) {
-  if (!_initialized) {
+  if (!initialized_) {
     printf("CombinationNumber is not initialzed.");
     return 0;
   }
-  return _m[n][r];
+  return m_[n][r];
 }
 
 }

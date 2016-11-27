@@ -1,4 +1,3 @@
-typedef unsigned long long llu;
 #include <vector>
 
 #include <combination.h>
@@ -10,33 +9,33 @@ bool Combination::next() {
   int i = 0;
   int i_to_update = 0;
 
-  if (indices[r - 1] == max_indices[r - 1]) return false;
+  if (indices_[r_ - 1] == max_indices_[r_ - 1]) return false;
 
-  for (i = 0; i < r; i++) {
-    if (indices[i] < max_indices[i]) {
+  for (i = 0; i < r_; ++i) {
+    if (indices_[i] < max_indices_[i]) {
       i_to_update = i;
       break;
     } 
   }
 
-  result[i_to_update]++;
+  ++result_[i_to_update];
   
   // rを3等の定数にするだけで10%ほど速くなる
-  for (i = 0; i < r; i++) {
+  for (i = 0; i < r_; ++i) {
     if (i >= i_to_update) {
-      indices[i]++;
+      ++indices_[i];
       continue;
     }
 
-    result[i] = i;
-    indices[i] = 1;
+    result_[i] = i;
+    indices_[i] = 1;
       
     if (i == i_to_update - 1) {
-      max_indices[i] = CombinationNumber::get(result[i_to_update], i_to_update); 
+      max_indices_[i] = CombinationNumber::get(result_[i_to_update], i_to_update); 
       continue;
     }
 
-    max_indices[i] = 1;
+    max_indices_[i] = 1;
     continue;
   }
   
@@ -45,46 +44,46 @@ bool Combination::next() {
 
 // 出力用
 vector<int> Combination::to_vector() {
-  v.assign(result, result + r);
-  return v;
+  v_.assign(result_, result_ + r_);
+  return v_;
 }
 
-Combination::Combination(int n, int r) : n(n), r(r) {
+Combination::Combination(int n, int r) : n_(n), r_(r) {
   int i;
 
   CombinationNumber::init();
 
   // この形で初期化できない場合はどうやるか
-  result = new int[r];
+  result_ = new int[r_];
 
   // ここのNULL例外はどうやってハンドルするか。いつ失敗するか。
-  if (result != NULL) memset(result, 0, r * sizeof *result);
+  if (result_ != NULL) memset(result_, 0, r * sizeof *result_);
 
-  indices = new int64_t[r];
-  if (indices != NULL) memset(indices, 0, r * sizeof *indices);
+  indices_ = new int64_t[r_];
+  if (indices_ != NULL) memset(indices_, 0, r * sizeof *indices_);
   
-  max_indices = new int64_t[r];
-  if (max_indices != NULL) memset(max_indices, 0, r * sizeof *max_indices);
+  max_indices_ = new int64_t[r_];
+  if (max_indices_ != NULL) memset(max_indices_, 0, r * sizeof *max_indices_);
 
-  if (result != NULL && indices != NULL && max_indices != NULL) {
-    for (i = 0; i < r; i++) {
-      result[i] = i;
-      indices[i] = 1;
-      if (i == r - 1) {
-        max_indices[i] = CombinationNumber::get(n, r);
+  if (result_ != NULL && indices_ != NULL && max_indices_ != NULL) {
+    for (i = 0; i < r_; ++i) {
+      result_[i] = i;
+      indices_[i] = 1;
+      if (i == r_ - 1) {
+        max_indices_[i] = CombinationNumber::get(n_, r_);
       } else {
-        max_indices[i] = 1; 
+        max_indices_[i] = 1; 
       }
     }
   }
 
-  v.resize(r);
+  v_.resize(r_);
 }
 
 Combination::~Combination() {
-  if(result != NULL) delete [] result;
+  if (result_ != NULL) delete [] result_;
 
-  if(indices != NULL) delete [] indices;
+  if (indices_ != NULL) delete [] indices_;
 
-  if(max_indices != NULL) delete [] max_indices;
+  if (max_indices_ != NULL) delete [] max_indices_;
 }
