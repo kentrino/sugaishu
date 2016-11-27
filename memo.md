@@ -31,3 +31,6 @@ http://stackoverflow.com/questions/20807222/undefined-symbols-for-architecture-x
 
 # テンプレートの実装をヘッダに書かなければならない理由！！
 http://d.hatena.ne.jp/pknight/20090826/1251303641
+
+# 文字列で学ぶC++入門
+http://qiita.com/7shi/items/cac7b3e9b90bf91b00cc
