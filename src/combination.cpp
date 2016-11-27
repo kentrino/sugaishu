@@ -19,25 +19,25 @@ bool Combination::next() {
     } 
   }
 
-  result[i_to_update] += 1;
+  result[i_to_update]++;
   
-  // 詰め直し
   for (i = 0; i < r; i++) {
-    if (i <= i_to_update) {
-      if (i != i_to_update) {
-        result[i] = i;
-      }
-      if (i > 0) {
-        indices[i - 1] = 1;
-        if (i != i_to_update) {
-          max_indices[i - 1] = 1;
-        } else {
-          max_indices[i_to_update - 1] = CombinationNumber::get(result[i_to_update], i_to_update); 
-        }
-      }
-    } else {
-      indices[i] += 1;
+    if (i >= i_to_update) {
+      indices[i]++;
+      continue;
     }
+
+    result[i] = i;
+    indices[i] = 1;
+      
+    if (i == i_to_update - 1) {
+      // TODO: result[i_to_update]をiに変えたら40%ほど遅くなった、、
+      max_indices[i_to_update - 1] = CombinationNumber::get(result[i_to_update], i_to_update); 
+      continue;
+    }
+
+    max_indices[i] = 1;
+    continue;
   }
   
   return true;
