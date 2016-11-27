@@ -21,23 +21,22 @@ bool Combination::next() {
 
   result[i_to_update] += 1;
   
-  // indicesの更新
-  for (i = i_to_update; i < r; i++) {
-    indices[i] += 1;
-  }
-
   // 詰め直し
-  for (i = 0; i <= i_to_update; i++) {
-    if (i != i_to_update) {
-      result[i] = i;
-    }
-    if (i > 0) {
-      indices[i - 1] = 1;
+  for (i = 0; i < r; i++) {
+    if (i <= i_to_update) {
       if (i != i_to_update) {
-        max_indices[i - 1] = 1;
-      } else {
-        max_indices[i_to_update - 1] = CombinationNumber::get(result[i_to_update], i_to_update); 
+        result[i] = i;
       }
+      if (i > 0) {
+        indices[i - 1] = 1;
+        if (i != i_to_update) {
+          max_indices[i - 1] = 1;
+        } else {
+          max_indices[i_to_update - 1] = CombinationNumber::get(result[i_to_update], i_to_update); 
+        }
+      }
+    } else {
+      indices[i] += 1;
     }
   }
   
