@@ -7,12 +7,12 @@ typedef unsigned long long llu;
 using namespace std;
 
 bool Combination::next() {
-  int i;
-  int i_to_update;
+  int i = 0;
+  int i_to_update = 0;
 
   if (indices[r - 1] == max_indices[r - 1]) return false;
 
-  for (i = 0; i < 4; i++) {
+  for (i = 0; i < r; i++) {
     if (indices[i] < max_indices[i]) {
       i_to_update = i;
       break;
@@ -21,6 +21,7 @@ bool Combination::next() {
 
   result[i_to_update]++;
   
+  // rを3等の定数にするだけで10%ほど速くなる
   for (i = 0; i < r; i++) {
     if (i >= i_to_update) {
       indices[i]++;
@@ -31,8 +32,7 @@ bool Combination::next() {
     indices[i] = 1;
       
     if (i == i_to_update - 1) {
-      // TODO: result[i_to_update]をiに変えたら40%ほど遅くなった、、
-      max_indices[i_to_update - 1] = CombinationNumber::get(result[i_to_update], i_to_update); 
+      max_indices[i] = CombinationNumber::get(result[i_to_update], i_to_update); 
       continue;
     }
 

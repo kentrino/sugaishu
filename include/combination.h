@@ -14,8 +14,8 @@ class Combination {
     ~Combination();
 
   private:
-    int n;
-    int r;
+    const int n;
+    const int r;
 
     int *result;
     int64_t *indices;
