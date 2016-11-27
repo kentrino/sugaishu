@@ -25,3 +25,9 @@ http://stackoverflow.com/questions/3670031/static-string-constants-in-class-vs-n
 http://www.programming-magic.com/20090123132035/
 
 http://hatenaclang.blogspot.jp/2011/09/stl.html
+
+# リンカのエラー
+http://stackoverflow.com/questions/20807222/undefined-symbols-for-architecture-x86-64-linker-command-failed
+
+# テンプレートの実装をヘッダに書かなければならない理由！！
+http://d.hatena.ne.jp/pknight/20090826/1251303641

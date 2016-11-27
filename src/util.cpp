@@ -1,6 +1,8 @@
 #include <sstream>
 #include <vector>
 
+#include <util.h>
+
 using namespace std;
 
 string toString(vector<int> vec, int vecSize)

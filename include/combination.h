@@ -5,7 +5,25 @@
 
 using namespace std;
 
-unsigned long long combination_number(int n, int r);
+class Combination {
+  public:
+    bool next();
+    vector<int> to_vector();
+    Combination(int n, int r);
+    ~Combination();
+
+  private:
+    int n;
+    int r;
+
+    int *result;
+    int64_t *indices;
+    int64_t *max_indices;
+
+    vector<int> v;
+};
+
+int64_t combination_number(int n, int r);
 vector<int> combination(int n, int r, unsigned long long k);
 
 // http://photon.poly.edu/~hbr/boost/combinations.html
