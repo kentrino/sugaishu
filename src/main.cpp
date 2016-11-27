@@ -1,41 +1,56 @@
 #include <vector>
-#include <stdio.h>
+#include <cstdio>
+#include <iostream>
+
 #include <miller.h>
 #include <prime_list.h>
 #include <check.h>
-#include <next_combination.h>
+#include <combination.h>
+#include <util.h>
+
+using namespace std;
 
 int main()
 {
-  int i, j, _n, n;
+  int i, j, _n, n, iLastPrime;
 
-  // printf("%d\n", Prime::list[10]);
-  // printf("%d\n", Prime::last[97]);
-
-  int m = 10;
-  int ps[] = {2, 3, 5};
-  check3(ps, m);
-
-  int N_MAX = 10000 / 6;
-  for (_n = 0; _n < N_MAX; _n++) {
-      n = _n * 6;
+  // 探すsugaishの桁数
+  int r = 4;
 
 
+  vector <int> _v;
+  unsigned long long lli;
+
+  for (lli = 1; lli <= combination_number(100, 3); lli++) {
+    _v = combination(100, 3,lli);
+    cout << toString(_v, 3) << endl;
   }
 
+  int N_MAX = 10000 / 6;
+  vector<int> v;
 
-  /* combination
-  int n = 4;
-  int r = 2;
+  
 
-  std::vector<int> data;
-  for (i = 0; i < n; i++) data.push_back(i);
+  //for (_n = 1; _n < N_MAX; _n++) {
+    //n = _n * 6;
+    n = 30;
 
-  do {
-    printf("[ ");
-    for (i = 0; i < r; i++) printf("%d ",data[i]);
-    printf("]\n");
-  } while (next_combination(data.begin(), data.begin() + r, data.end()));
-  */
+    iLastPrime = Prime::last[n - 1];
+    v.assign(Prime::list, Prime::list + iLastPrime + 1);
+
+    int count = 0;
+    do {
+      count += 1;
+      //cout << toString(v, r) << endl;
+      /*
+      if (check3(v, n)) {
+        
+      }
+      */
+    } while (next_combination(v.begin(), v.begin() + r, v.end()));
+    
+    //cout << count << endl;
+  //}
+
   return 0;
 }

@@ -2,4 +2,5 @@ obj/*
 !obj/.gitkeep
 bin/*
 !bin/.gitkeep
-
+log/*
+!log/.gitkeep

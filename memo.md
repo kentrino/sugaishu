@@ -20,3 +20,8 @@ const int list[10001]
 constつける場合
 両方にextern
 http://stackoverflow.com/questions/3670031/static-string-constants-in-class-vs-namespace-for-constants-c
+
+全ての組み合わせを作る【C++】
+http://www.programming-magic.com/20090123132035/
+
+http://hatenaclang.blogspot.jp/2011/09/stl.html

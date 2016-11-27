@@ -1,8 +1,12 @@
-#ifndef __NEXT_COMBINATION_H__
-#define __NEXT_COMBINATION_H__
+#ifndef __COMBINATION_H__
+#define __COMBINATION_H__
 #include <algorithm>
+#include <vector>
 
 using namespace std;
+
+unsigned long long combination_number(int n, int r);
+vector<int> combination(int n, int r, unsigned long long k);
 
 // http://photon.poly.edu/~hbr/boost/combinations.html
 
