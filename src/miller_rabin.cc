@@ -10,7 +10,7 @@ bool m_[MEMO_MAX] = {};
 bool memorized_[MEMO_MAX] = {};
 
 // TODO: これどうにかしたい
-int64_t mod_power(int64_t x, int64_t y, int64_t p);
+inline int64_t mod_power(int64_t x, int64_t y, int64_t p);
 
 bool test(int64_t n) {
   int i, j;
@@ -74,7 +74,7 @@ void init() {
   std::uninitialized_fill_n(memorized_, MEMO_MAX, false);
 }*/
 
-int64_t mod_power(int64_t p, int64_t y, int64_t n) {
+inline int64_t mod_power(int64_t p, int64_t y, int64_t n) {
   int64_t res = 1;
 
   while (y >= 1) {
