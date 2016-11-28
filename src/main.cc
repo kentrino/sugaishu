@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <iostream>
 
-#include <miller.h>
 #include <prime_list.h>
 #include <check.h>
 #include <combination.h>
 #include <util.h>
 #include <combination_number.h>
 #include <next_combination.h>
+#include <miller_rabin.h>
 
 using namespace std;
 
@@ -19,6 +19,7 @@ int main()
   // 探すsugaishの桁数
   int r = 4;
 
+  /*
   Combination *combination = new Combination(1000, 3);
   int count = 0;
   do {
@@ -26,6 +27,12 @@ int main()
     //cout << toString(combination->to_vector(), 4) << endl;
   } while (combination->next());
   cout << count << endl;
+  */
+  
+  cout << 2 << ": " << MillerRabin::test(2) << endl; 
+  for (i = 0; i < 100; ++i) {
+    cout << i << ": " << MillerRabin::test(i) << endl; 
+  }
 
   vector<int> v;
   //for (_n = 1; _n < N_MAX; _n++) {

@@ -37,3 +37,12 @@ http://qiita.com/7shi/items/cac7b3e9b90bf91b00cc
 
 # ビルドツールbazel
 http://blog.matsuokah.jp/entry/2015/12/15/080000
+
+# MillerRabin参考
+http://is2011.2-d.jp/moin/moin.cgi/amylase/icpc
+
+# こういうMillerRabinもある
+http://tubo28.me/algorithm/miller-rabin/
+
+# MillerRabinのセット
+https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test

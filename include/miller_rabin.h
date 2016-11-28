@@ -1,6 +1,12 @@
-#ifndef __MILLER_H__
-#define __MILLER_H__
+#ifndef SUGAISH_MILLER_RABIN_H_
+#define SUGAISH_MILLER_RABIN_H_
 
-int isPrime(int n);
+#include <cstdint>
 
-#endif
+namespace MillerRabin {
+
+bool test(int64_t n);
+
+}
+
+#endif  // SUGAISH_MILLER_RABIN_H_
