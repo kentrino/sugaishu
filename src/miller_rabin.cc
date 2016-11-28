@@ -5,7 +5,7 @@
 
 namespace MillerRabin {
   
-const static int MEMO_MAX = 100000000;
+const static int MEMO_MAX = 500000000;
 bool m_[MEMO_MAX] = {};
 bool memorized_[MEMO_MAX] = {};
 
