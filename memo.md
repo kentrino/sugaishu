@@ -46,3 +46,12 @@ http://tubo28.me/algorithm/miller-rabin/
 
 # MillerRabinのセット
 https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+
+# SIMD化
+http://www.slideshare.net/FukushimaNorishige/simd-10548373
+
+# SIMD化
+http://koturn.hatenablog.com/entry/2016/07/18/090000
+
+#include <x86intrin.h>
+でまとめてインポートできる

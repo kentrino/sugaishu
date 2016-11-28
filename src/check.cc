@@ -62,8 +62,8 @@ bool check4(int primes[], int n)
 
 bool check3(int primes[], int n)
 {
-  int d[3][3];
-  int i, j;
+  static int d[3][3];
+  static int i, j;
 
   for (i = 0; i < 3; i++) {
     d[0][i] = primes[i];
@@ -72,7 +72,7 @@ bool check3(int primes[], int n)
     }
   }
 
-  int pairs[6][2] = {
+  const static int pairs[6][2] = {
     {0, 1},
     {1, 0},
     {0, 2},
@@ -81,9 +81,9 @@ bool check3(int primes[], int n)
     {2, 1}
   };
 
-  int unused[3] = {2, 1, 0};
+  const static int unused[3] = {2, 1, 0};
 
-  int number2, number3;
+  static int number2, number3;
 
   for (i = 0; i < 6; i++) {
     // 二桁の数のチェック

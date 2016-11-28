@@ -5,7 +5,7 @@
 
 namespace MillerRabin {
   
-const static int MEMO_MAX = 10000000;
+const static int MEMO_MAX = 100000000;
 bool m_[MEMO_MAX] = {};
 bool memorized_[MEMO_MAX] = {};
 
@@ -74,17 +74,17 @@ void init() {
   std::uninitialized_fill_n(memorized_, MEMO_MAX, false);
 }*/
 
-int64_t mod_power(int64_t x, int64_t y, int64_t p) {
+int64_t mod_power(int64_t p, int64_t y, int64_t n) {
   int64_t res = 1;
-  x = x % p;
-  while (y > 0)
-  {
-    if (y & 1)
-      res = (res * x) % p;
 
-    y = y >> 1;
-    x = (x * x) % p;
+  while (y >= 1) {
+    if (y & 1) {
+      res = (res * p) % n;
+    }
+    y >>= 1;
+    p = (p * p) % n;
   }
+
   return res;
 }
 

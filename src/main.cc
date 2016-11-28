@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const static int BASE_N_MAX = 400;
+const static int BASE_N_MAX = 1000;
 
 int main()
 {
@@ -32,7 +32,6 @@ int main()
   int primes[4];
   int *prime_indices;
 
-  
   int _n_max = BASE_N_MAX / 6;
   for (_n = 3; _n < _n_max; ++_n) {
     n = _n * 6;
