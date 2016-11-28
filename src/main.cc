@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <vector>
 #include <cstdio>
 #include <iostream>
@@ -15,13 +16,17 @@ using namespace std;
 
 int main() {
   int i, j;
+  
+  ModCheck::init();
 
-  const static int BASE_N_MIN = 4410;
-  const static int BASE_N_MAX = 9000;
+  // 8976までさがした
+  // 7260: [743 5651 6961]
+  const static int BASE_N_MIN = 180;
+  const static int BASE_N_MAX = 1600;
 
   // 探すsugaishの桁数
   int r = 3;
-
+  
   Combination *combination;
   int primes[4];
   int *prime_indices;
@@ -45,9 +50,9 @@ int main() {
         primes[i] = Prime::list[*(prime_indices + i)];
       }
 
-      if (n % 5 == 1) {
-        if (!ModCheck::mod5(primes, r)) continue;
-      }
+      if (!ModCheck::mod5(primes, r, n)) continue;
+
+      if (!ModCheck::mod7(primes, n)) continue;
 
       if (check3(primes, n)) {
         cout << n << ": " << toString(primes, r) << endl;

@@ -5,7 +5,11 @@
 
 namespace ModCheck {
 
-bool mod5(int (&primes)[4], int r);
+void init();
+
+bool mod5(int (&primes)[4], int r, int n);
+
+bool mod7(int (&primes)[4], int n);
 
 }
 

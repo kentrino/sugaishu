@@ -55,3 +55,5 @@ http://koturn.hatenablog.com/entry/2016/07/18/090000
 
 #include <x86intrin.h>
 でまとめてインポートできる
+
+constに対しては関数の引数もconstでなくてはいけない
