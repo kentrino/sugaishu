@@ -1,7 +1,11 @@
 COMPILER  = g++
 
 # -g はデバッグオプションだがこのままで良いのか
-CFLAGS    = -g -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+CFLAGS    = -pg -std=gnu++11 -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+
+# リンカにもpgオプションがいる
+LFLAGS    = -pg
+
 ifeq "$(shell getconf LONG_BIT)" "64"
   LDFLAGS =
 else
@@ -26,7 +30,7 @@ OBJECTS   = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cc=.o)))
 DEPENDS   = $(OBJECTS:.o=.d)
 
 $(TARGET): $(OBJECTS) $(LIBS)
-	$(COMPILER) -o $@ $^ $(LDFLAGS)
+	$(COMPILER) $(LFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cc
 	# -mkdir -p $(OBJDIR)

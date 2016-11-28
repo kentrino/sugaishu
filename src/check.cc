@@ -1,3 +1,6 @@
+#include <check.h>
+#include <miller_rabin.h>
+
 bool check4(int primes[], int n)
 {
   int i, j;
@@ -39,14 +42,19 @@ bool check4(int primes[], int n)
   for (i = 0; i < 12; i++) {
     // 二桁の数のチェック
     number2 = d[1][pairs[i][1]] + d[0][pairs[i][0]];
+    if (!MillerRabin::test(number2)) return false;
 
     // 三桁の数のチェック
     number3_1 = number2 + d[2][unused[i/2][0][0]];
     number3_2 = number2 + d[2][unused[i/2][1][0]];
+    if (!MillerRabin::test(number3_1)) return false;
+    if (!MillerRabin::test(number3_2)) return false;
 
     // 四桁の数のチェック
     number4_1 = number3_1 + d[3][unused[i/2][0][1]];
     number4_2 = number3_2 + d[3][unused[i/2][1][1]];
+    if (!MillerRabin::test(number4_1)) return false;
+    if (!MillerRabin::test(number4_2)) return false;
   }
 
   return true;
@@ -80,9 +88,10 @@ bool check3(int primes[], int n)
   for (i = 0; i < 6; i++) {
     // 二桁の数のチェック
     number2 = d[1][pairs[i][1]] + d[0][pairs[i][0]];
-
+    if (!MillerRabin::test(number2)) return false;
     // 三桁の数のチェック
     number3 = number2 + d[2][unused[i/2]];
+    if (!MillerRabin::test(number3)) return false;
   }
 
   return true;

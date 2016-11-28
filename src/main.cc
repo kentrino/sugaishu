@@ -12,47 +12,65 @@
 
 using namespace std;
 
+const static int BASE_N_MAX = 400;
+
 int main()
 {
-  int i, j, _n, n, iLastPrime;
+  int i, j, _n, n, i_last_prime;
 
   // 探すsugaishの桁数
-  int r = 4;
-
-  /*
-  Combination *combination = new Combination(1000, 3);
-  int count = 0;
-  do {
-    count++;
-    //cout << toString(combination->to_vector(), 4) << endl;
-  } while (combination->next());
-  cout << count << endl;
-  */
+  int r = 3;
   
-  cout << 2 << ": " << MillerRabin::test(2) << endl; 
-  for (i = 0; i < 100; ++i) {
-    cout << i << ": " << MillerRabin::test(i) << endl; 
-  }
+  /*
+  int ps[] = {17, 23, 193};
+  for (i=0; i < 1000000; i++) {
+    check3(ps, 228);
+  }*/
+ 
+  
+  Combination *combination;
+  int primes[4];
+  int *prime_indices;
 
-  vector<int> v;
-  //for (_n = 1; _n < N_MAX; _n++) {
-    //n = _n * 6;
-    n = 30;
+  
+  int _n_max = BASE_N_MAX / 6;
+  for (_n = 3; _n < _n_max; ++_n) {
+    n = _n * 6;
 
-    iLastPrime = Prime::last[n - 1];
-    v.assign(Prime::list, Prime::list + iLastPrime + 1);
-
+    i_last_prime = Prime::last[n - 1];
+    combination = new Combination(i_last_prime, 3);
     do {
-      //cout << toString(v, r) << endl;
-      /*
-      if (check3(v, n)) {
-        
+      prime_indices = combination->get();
+      for (i = 0; i < 3; ++i) {
+        primes[i] = Prime::list[*(prime_indices + i)];
       }
-      */
-    } while (next_combination(v.begin(), v.begin() + r, v.end()));
-    
-    //cout << count << endl;
-  //}
+      if (check3(primes, n)) {
+        cout << "n: " << n <<endl;
+        cout << toString(primes, 3) << endl;
+      }
+    } while (combination->next());
 
+    delete combination;
+  }
+  
+  /*
+  n = 228;
+  cout << "n: " << n <<endl;
+
+  i_last_prime = Prime::last[n - 1];
+  combination = new Combination(i_last_prime, 3);
+  do {
+    prime_indices = combination->get();
+    for (i = 0; i < 3; ++i) {
+      primes[i] = Prime::list[*(prime_indices + i)];
+    }
+    //cout << toString(primes, 3) << endl;
+    if (check3(primes, n)) {
+      cout << toString(primes, 3) << endl;
+    }
+  } while (combination->next());
+
+  delete combination;
+  */
   return 0;
 }

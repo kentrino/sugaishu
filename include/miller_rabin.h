@@ -6,7 +6,6 @@
 namespace MillerRabin {
 
 bool test(int64_t n);
-
 }
 
 #endif  // SUGAISH_MILLER_RABIN_H_

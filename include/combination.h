@@ -9,6 +9,7 @@ using std::vector;
 class Combination {
   public:
     bool next();
+    int* get();
     vector<int> to_vector();
     Combination(int n, int r);
     ~Combination();

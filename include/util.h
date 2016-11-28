@@ -26,4 +26,6 @@ string toString(ElementType *arr, int arrSize) {
   return s.str();
 }
 
+extern int debug_out;
+
 #endif  // SUGAISH_UTIL_H_

@@ -53,16 +53,26 @@ bool test(int64_t n) {
     }
 
     if (is_composite) {
-      memorized_[n] = true;
-      m_[n] = false;
+      if (n < MEMO_MAX) {
+        memorized_[n] = true;
+        m_[n] = false;
+      }
       return false;
     }
   }
-
-  memorized_[n] = true;
-  m_[n] = true;
+  
+  if (n < MEMO_MAX) {
+    memorized_[n] = true;
+    m_[n] = true;
+  }
   return true;
 }
+
+/* #include <memory>
+void init() {
+  std::uninitialized_fill_n(m_, MEMO_MAX, false);
+  std::uninitialized_fill_n(memorized_, MEMO_MAX, false);
+}*/
 
 int64_t mod_power(int64_t x, int64_t y, int64_t p) {
   int64_t res = 1;

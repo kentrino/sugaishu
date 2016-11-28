@@ -22,3 +22,5 @@ string toString(vector<int> vec, int vecSize)
   s << "]";
   return s.str();
 }
+
+int debug_out = false;

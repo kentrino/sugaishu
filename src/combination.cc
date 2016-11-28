@@ -1,4 +1,6 @@
 #include <vector>
+#include <cstddef>
+#include <cstring>
 
 #include <combination.h>
 #include <combination_number.h>
@@ -40,6 +42,10 @@ bool Combination::next() {
   }
   
   return true;
+}
+
+int* Combination::get() {
+  return result_;
 }
 
 // 出力用

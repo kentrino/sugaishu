@@ -4,3 +4,7 @@ bin/*
 !bin/.gitkeep
 log/*
 !log/.gitkeep
+
+# gprof output file
+gmon.out
+
