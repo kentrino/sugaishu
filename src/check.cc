@@ -1,3 +1,5 @@
+#include <cstdint>
+
 #include <check.h>
 #include <miller_rabin.h>
 
@@ -62,13 +64,13 @@ bool check4(int primes[], int n)
 
 bool check3(int primes[], int n)
 {
-  static int d[3][3];
   static int i, j;
+  static int64_t d[3][3];
 
   for (i = 0; i < 3; i++) {
-    d[0][i] = primes[i];
+    d[0][i] = static_cast<int64_t>(primes[i]);
     for (j = 1; j < 3; j++) {
-      d[j][i] = d[j-1][i] * n;
+      d[j][i] = static_cast<int64_t>(d[j-1][i] * n);
     }
   }
 
@@ -83,7 +85,7 @@ bool check3(int primes[], int n)
 
   const static int unused[3] = {2, 1, 0};
 
-  static int number2, number3;
+  static int64_t number2, number3;
 
   for (i = 0; i < 6; i++) {
     // 二桁の数のチェック

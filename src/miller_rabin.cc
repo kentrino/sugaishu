@@ -1,7 +1,10 @@
 #include <cstdint>
+#include <boost/multiprecision/cpp_int.hpp>
 
 #include <miller_rabin.h>
 #include <prime_list.h>
+
+namespace mp = boost::multiprecision;
 
 namespace MillerRabin {
   
@@ -10,7 +13,8 @@ bool m_[MEMO_MAX] = {};
 bool memorized_[MEMO_MAX] = {};
 
 // TODO: これどうにかしたい
-inline int64_t mod_power(int64_t x, int64_t y, int64_t p);
+inline int mod_power(int _p, int64_t y, int n);
+inline int64_t mod_power(int _p, int64_t y, int64_t n);
 
 bool test(int64_t n) {
   int i, j;
@@ -43,8 +47,13 @@ bool test(int64_t n) {
   int64_t p;
   for (i = 0; i < max_tester_prime_index; ++i) {
     bool is_composite = true;
-    p = static_cast<int64_t>(Prime::list[i]);
-    x = mod_power(p, d, n);
+    p = Prime::list[i];
+    if (n < 2147483647) {
+      x = mod_power(p, d, static_cast<int>(n));
+    } else {
+      // use int128
+      x = static_cast<int64_t>(mp::powm<mp::int128_t>(p, d, n));
+    }
     is_composite = is_composite && (x % n != 1);
 
     for (j = 0; j < s; j++) {
@@ -74,8 +83,12 @@ void init() {
   std::uninitialized_fill_n(memorized_, MEMO_MAX, false);
 }*/
 
-inline int64_t mod_power(int64_t p, int64_t y, int64_t n) {
-  int64_t res = 1;
+inline int mod_power(int _p, int64_t y, int n) {
+  static int64_t res;
+  static int64_t p;
+
+  res = 1;
+  p = _p;
 
   while (y >= 1) {
     if (y & 1) {
@@ -85,7 +98,25 @@ inline int64_t mod_power(int64_t p, int64_t y, int64_t n) {
     p = (p * p) % n;
   }
 
-  return res;
+  return static_cast<int>(res);
+}
+
+inline int64_t mod_power(int _p, int64_t y, int64_t n) {
+  static mp::int128_t res;
+  static mp::int128_t p;
+
+  res = 1;
+  p = _p;
+
+  while (y >= 1) {
+    if (y & 1) {
+      res = (res * p) % n;
+    }
+    y >>= 1;
+    p = (p * p) % n;
+  }
+
+  return static_cast<int64_t>(res);
 }
 
 }
