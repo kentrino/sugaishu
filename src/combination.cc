@@ -8,8 +8,9 @@
 using std::vector;
 
 bool Combination::next() {
-  int i;
-  int i_to_update = 0;
+  static int i;
+  static int i_to_update;
+  i_to_update = 0;
 
   if (indices_[r_ - 1] == max_indices_[r_ - 1]) return false;
 

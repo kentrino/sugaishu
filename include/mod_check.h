@@ -7,9 +7,9 @@ namespace ModCheck {
 
 void init();
 
-bool mod5(int (&primes)[4], int r, int n);
+bool mod5(const int primes[], int n);
 
-bool mod7(int (&primes)[4], int n);
+bool mod7(const int primes[], int n);
 
 }
 

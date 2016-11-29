@@ -1,6 +1,8 @@
+#include <prime_list.h>
+
 namespace Prime {
 
-extern const int list[] = {
+const int list[] = {
   2,
   3,
   5,
@@ -1233,7 +1235,7 @@ extern const int list[] = {
 };
 
 // nを超えない最大の素数
-extern const int last[] = {
+const int last[] = {
   0,
   0, 
   0, // 2

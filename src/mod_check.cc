@@ -31,20 +31,16 @@ void init() {
   }
 }
 
-bool mod5(int (&primes)[4], int r, int n) {
+bool mod5(const int primes[], int n) {
   static bool check3;
   if (n % 5 == 0) return true;
   if (n % 5 != 1) return false;
-
-  check3 = primes[0] % 5 == 1 && primes[1] % 5 == 1 && primes[2] % 5 == 1;
-  if (r == 3) {
-    return check3;
-  }
-  return check3 && primes[3] == 1;
+  check3 = primes[0] % 5 == 1 && primes[1] % 5 == 1 && primes[2] % 5 == 1;  
+  return check3;
 }
 
 // 3桁へのチェックのみ
-bool mod7(int (&primes)[4], int n) {
+bool mod7(const int primes[], int n) {
   static int c;
   static unordered_set<int>::iterator it; 
   if (n % 7 == 0) return true;

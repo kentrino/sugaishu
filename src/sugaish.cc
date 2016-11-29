@@ -52,7 +52,7 @@ void find3(int start, int end) {
         primes[i] = Prime::list[*(prime_indices + i)];
       }
 
-      if (!ModCheck::mod5(primes, r, n)) continue;
+      if (!ModCheck::mod5(primes, n)) continue;
 
       if (!ModCheck::mod7(primes, n)) continue;
 

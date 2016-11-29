@@ -8,7 +8,7 @@ namespace mp = boost::multiprecision;
 
 namespace MillerRabin {
   
-const static int MEMO_MAX = 500000000;
+const int MEMO_MAX = 500000000;
 bool m_[MEMO_MAX] = {};
 bool memorized_[MEMO_MAX] = {};
 
@@ -17,7 +17,7 @@ inline int mod_power(int _p, int64_t y, int n);
 inline int64_t mod_power(int _p, int64_t y, int64_t n);
 
 bool test(int64_t n) {
-  int i, j;
+  static int i, j;
 
   if (n < 2) return false;
   if (n == 2) return true;
@@ -26,7 +26,9 @@ bool test(int64_t n) {
     return m_[n];
   }
 
-  int max_tester_prime_index = 0;
+  static int max_tester_prime_index;
+  max_tester_prime_index = 0;
+
   if (n < 1373653) {
     max_tester_prime_index = 1;
   } else if (n < 2152302898747) {
@@ -35,16 +37,20 @@ bool test(int64_t n) {
     max_tester_prime_index = 11;
   }
 
-  int64_t d = n - 1;
-  int64_t s = 0;
+  static int64_t d;
+  static int64_t s;
+  d = n - 1;
+  s = 0;
 
   while (d % 2 == 0) {
     d /= 2;
     ++s;
   }
 
+  mp::int128_t x_int128;
   int64_t x;
   int64_t p;
+  
   for (i = 0; i < max_tester_prime_index; ++i) {
     bool is_composite = true;
     p = Prime::list[i];
@@ -52,7 +58,8 @@ bool test(int64_t n) {
       x = mod_power(p, d, static_cast<int>(n));
     } else {
       // use int128
-      x = static_cast<int64_t>(mp::powm<mp::int128_t>(p, d, n));
+      x_int128 = mp::powm<mp::int128_t>(p, d, n);
+      x = static_cast<int64_t>(x_int128);
     }
     is_composite = is_composite && (x % n != 1);
 
