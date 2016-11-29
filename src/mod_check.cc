@@ -12,6 +12,8 @@ namespace ModCheck {
 
 // TODO: これで良いの？？
 extern const int mod7filter_array_[6][24][3];
+
+// TODO: vector<vectorの方が5%ほど速い
 static vector<unordered_set<int> > mod7filter_;
 
 int code(const int primes[], int n);

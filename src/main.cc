@@ -9,8 +9,8 @@ int main() {
 
   // 8976までさがした
   // 7260: [743 5651 6961]
-  const static int BASE_N_MIN = 4590;
-  const static int BASE_N_MAX = 4650;
+  const static int BASE_N_MIN = 20;
+  const static int BASE_N_MAX = 1000;
 
   Sugaish::find3(BASE_N_MIN, BASE_N_MAX);
   

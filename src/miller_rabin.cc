@@ -101,22 +101,4 @@ inline int mod_power(int _p, int64_t y, int n) {
   return static_cast<int>(res);
 }
 
-inline int64_t mod_power(int _p, int64_t y, int64_t n) {
-  static mp::int128_t res;
-  static mp::int128_t p;
-
-  res = 1;
-  p = _p;
-
-  while (y >= 1) {
-    if (y & 1) {
-      res = (res * p) % n;
-    }
-    y >>= 1;
-    p = (p * p) % n;
-  }
-
-  return static_cast<int64_t>(res);
-}
-
 }
