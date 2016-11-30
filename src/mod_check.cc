@@ -1,12 +1,14 @@
 #include <algorithm>
+#include <cmath>
 #include <unordered_set>
 #include <vector>
 
 #include <mod_check.h>
 
-using std::vector;
+using std::pow;
 using std::swap;
 using std::unordered_set;
+using std::vector;
 
 namespace ModCheck {
 
@@ -17,6 +19,21 @@ extern const int mod7filter_array_[6][24][3];
 static vector<unordered_set<int> > mod7filter_;
 
 int code(const int primes[], int n);
+
+void init_mod7_filter() {
+  const int base = 7;
+  const int max = pow(6, 4);
+  int i, j, k;
+  int numbers[4];
+
+  for (i = 0; i < max; ++i) {
+    k = i;
+    for (j = 0; j < 4; ++j) {
+      numbers[j] = k % base;
+      k = k / base;
+    }
+  }
+}
 
 void init() {
   int i, j;
@@ -63,7 +80,6 @@ void sort(int (&mod_primes)[3]) {
 int code(const int primes[], int n) {
   static int i;
   static int code;
-  static vector<int> v;
   static int mod_primes[3];
 
   for (i = 0; i < 3; ++i) {
