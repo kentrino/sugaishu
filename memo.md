@@ -57,3 +57,25 @@ http://koturn.hatenablog.com/entry/2016/07/18/090000
 でまとめてインポートできる
 
 constに対しては関数の引数もconstでなくてはいけない
+
+
+# SIMD命令一覧
+http://wwweic.eri.u-tokyo.ac.jp/computer/manual/altix/compile/CC/Intel_Cdoc91/main_cls/mergedProjects/intref_cls/common/intref_sse2_integer_arithmetic.htm
+http://www.officedaytime.com/tips/simd.html
+
+# 剰余の籍を高速にもとめる（モンゴメリ乗算）
+https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%82%B4%E3%83%A1%E3%83%AA%E4%B9%97%E7%AE%97
+
+https://ja.wikipedia.org/wiki/%E5%86%AA%E5%89%B0%E4%BD%99
+
+# モンゴメリ乗算
+https://www.scwirq.com/index.php/2016/10/11/%E3%83%A2%E3%83%B3%E3%82%B4%E3%83%A1%E3%83%AA%E4%B9%97%E7%AE%97/
+
+php
+ruby 
+vue.js
+mod_rewrite
+PHPライブラリもある
+
+17日1時
+
